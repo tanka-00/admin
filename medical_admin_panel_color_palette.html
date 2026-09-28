@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Admin Panel - Ultimate UI Color System</title>
+<style>
+  :root {
+    --navy: #03045E;
+    --primary: #0077B6;
+    --clinical: #05668D;
+    --teal: #028090;
+    --success: #00A896;
+    --cta: #02C39A;
+    --info: #00B4D8;
+    --sky: #90E0EF;
+    --card: #CAF0F8;
+    --warning: #FFB703;
+    --ink: #172A3A;
+    --surface: #F7FCFE;
+    --white: #FFFFFF;
+    --line: #BDEBF5;
+    --muted: #5F7484;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #eaf6fa;
+    color: var(--ink);
+  }
+
+  .page {
+    width: min(100%, 1120px);
+    min-height: 1584px;
+    margin: 32px auto;
+    background: var(--surface);
+    box-shadow: 0 18px 50px rgba(3, 4, 94, 0.10);
+    overflow: hidden;
+  }
+
+  .hero {
+    min-height: 236px;
+    background: var(--navy);
+    color: white;
+    padding: 54px 72px 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(30px, 4vw, 47px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+  .hero p {
+    margin: 14px 0 0;
+    font-size: 18px;
+    color: #d7f1fa;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 206px;
+    min-height: 58px;
+    padding: 0 24px;
+    border-radius: 999px;
+    background: var(--cta);
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: .02em;
+  }
+
+  .content { padding: 42px 72px 54px; }
+  h2, h3 { color: var(--navy); }
+  h2 {
+    margin: 0;
+    font-size: 31px;
+    letter-spacing: -0.025em;
+  }
+  .intro {
+    margin: 12px 0 28px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .palette {
+    display: grid;
+    gap: 12px;
+  }
+  .palette-row {
+    display: grid;
+    grid-template-columns: 58px minmax(150px, 1fr) 120px minmax(240px, 2fr);
+    gap: 14px;
+    align-items: center;
+  }
+  .swatch {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px rgba(3, 4, 94, .06);
+  }
+  .name { font-weight: 800; color: var(--navy); }
+  .hex { font-weight: 700; white-space: nowrap; }
+  .use { line-height: 1.35; }
+
+  .semantic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 70px;
+  }
+  .semantic-card {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 16px;
+    align-items: center;
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 17px 18px;
+  }
+  .semantic-pill {
+    width: 18px;
+    height: 38px;
+    border-radius: 999px;
+  }
+  .semantic-title { margin: 0 0 5px; color: var(--navy); font-weight: 800; }
+  .semantic-copy { margin: 0; font-size: 14px; line-height: 1.35; }
+
+  .ratio {
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .page-break {
+    page-break-before: always;
+    min-height: 1584px;
+  }
+
+  .admin-intro h2 { margin-bottom: 8px; }
+  .admin-intro p { margin: 0; font-size: 16px; }
+
+  .admin-shell {
+    display: grid;
+    grid-template-columns: 244px minmax(0, 1fr);
+    gap: 36px;
+    margin-top: 42px;
+  }
+
+  .sidebar {
+    background: var(--navy);
+    border-radius: 26px;
+    padding: 34px 20px;
+    color: white;
+    min-height: 560px;
+  }
+  .brand {
+    margin: 0 8px 24px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+  }
+  .nav {
+    display: grid;
+    gap: 9px;
+  }
+  .nav-item {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 14px;
+    color: white;
+    font-size: 15px;
+  }
+  .nav-item.active {
+    background: white;
+    color: var(--navy);
+    font-weight: 800;
+  }
+  .nav-dot { width: 14px; height: 30px; border-radius: 999px; }
+
+  .dashboard {
+    background: #f5fbfd;
+    border-radius: 26px;
+    padding: 30px;
+  }
+  .dashboard h3 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: -.02em;
+  }
+  .date { margin: 8px 0 26px; font-size: 14px; }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .kpi {
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+    min-height: 94px;
+  }
+  .kpi-label { margin: 0 0 11px; font-weight: 700; font-size: 13px; }
+  .kpi-value { margin: 0; color: var(--navy); font-size: 22px; font-weight: 800; }
+
+  .dash-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 22px;
+    margin-top: 32px;
+  }
+  .panel {
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: 18px;
+    padding: 22px;
+    min-height: 220px;
+  }
+  .panel-title { margin: 0 0 18px; color: var(--navy); font-size: 17px; }
+  .chart {
+    height: 126px;
+    display: flex;
+    align-items: end;
+    gap: 17px;
+    padding: 8px 12px 0;
+  }
+  .bar {
+    flex: 1;
+    min-width: 18px;
+    background: var(--info);
+    border-radius: 9px 9px 4px 4px;
+  }
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 8px 8px 0;
+    gap: 17px;
+    font-size: 10px;
+    text-align: center;
+  }
+  .queue { display: grid; gap: 16px; margin-top: 20px; }
+  .queue-item { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+  .queue-dot { width: 13px; height: 13px; border-radius: 50%; }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .btn {
+    border: 0;
+    min-height: 48px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: default;
+  }
+  .btn.primary { background: var(--primary); color: white; }
+  .btn.secondary { background: var(--teal); color: white; }
+  .btn.soft { background: #c6ebf4; color: var(--navy); }
+
+  .forms { margin-top: 48px; }
+  .forms h2 { margin-bottom: 22px; }
+  .search-bar {
+    display: grid;
+    grid-template-columns: 136px 1fr 168px 168px;
+    gap: 16px;
+    align-items: center;
+    background: #f5fbfd;
+    border: 1.5px solid var(--line);
+    border-radius: 17px;
+    padding: 12px 18px;
+  }
+  .search-label { font-weight: 800; }
+  .field {
+    min-height: 48px;
+    padding: 0 18px;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    color: #7e93a1;
+    font-size: 14px;
+  }
+
+  .table-card {
+    margin-top: 28px;
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: 17px;
+    padding: 18px 24px 8px;
+    overflow-x: auto;
+  }
+  table { width: 100%; border-collapse: collapse; min-width: 600px; }
+  th, td { padding: 14px 0; text-align: left; }
+  th { color: var(--navy); font-size: 14px; }
+  td { border-bottom: 1px solid #e1eef3; font-size: 14px; }
+  tr:last-child td { border-bottom: 0; }
+  .status {
+    display: inline-flex;
+    min-width: 126px;
+    justify-content: center;
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--navy);
+  }
+  .confirmed, .completed { background: var(--cta); }
+  .waiting { background: var(--warning); }
+  .consult { background: var(--teal); color: white; }
+
+  .accessibility { margin-top: 38px; }
+  .accessibility h3 { margin: 0 0 16px; font-size: 21px; }
+  .accessibility ul { margin: 0; padding-left: 24px; }
+  .accessibility li { margin: 10px 0; line-height: 1.45; }
+
+  .footer {
+    margin-top: 42px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  @media (max-width: 900px) {
+    .page { margin: 0; width: 100%; min-height: auto; }
+    .hero, .content { padding-left: 28px; padding-right: 28px; }
+    .hero { align-items: flex-start; flex-direction: column; }
+    .palette-row { grid-template-columns: 52px 1fr; }
+    .palette-row .hex, .palette-row .use { grid-column: 2; }
+    .semantic-grid { grid-template-columns: 1fr; }
+    .admin-shell { grid-template-columns: 1fr; }
+    .sidebar { min-height: 0; }
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .search-bar { grid-template-columns: 1fr 1fr; }
+    .search-label { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 560px) {
+    .hero-badge { min-width: 160px; min-height: 50px; }
+    .kpis, .dash-grid, .buttons, .search-bar { grid-template-columns: 1fr; }
+    .dashboard { padding: 20px; }
+    .chart { gap: 8px; }
+    .days { gap: 8px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; width: 100%; }
+    .page-break { break-before: page; }
+  }
+</style>
+</head>
+<body>
+  <section class="page">
+    <header class="hero">
+      <div>
+        <h1>MEDICAL ADMIN PANEL</h1>
+        <p>Ultimate UI Color System</p>
+      </div>
+      <div class="hero-badge">HEALTHCARE</div>
+    </header>
+
+    <main class="content">
+      <section aria-labelledby="palette-title">
+        <h2 id="palette-title">Core palette</h2>
+        <p class="intro">Use darker tones for navigation and primary actions; reserve bright accents for states and insights.</p>
+
+        <div class="palette">
+          <div class="palette-row">
+            <span class="swatch" style="background:#03045E"></span>
+            <span class="name">Trust / Navigation</span>
+            <span class="hex">#03045E</span>
+            <span class="use">Sidebar, top bar, headings on light UI</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#0077B6"></span>
+            <span class="name">Primary Action</span>
+            <span class="hex">#0077B6</span>
+            <span class="use">Primary buttons, links, selected controls</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#05668D"></span>
+            <span class="name">Clinical Blue</span>
+            <span class="hex">#05668D</span>
+            <span class="use">Secondary actions, icon accents</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#028090"></span>
+            <span class="name">Healthcare Teal</span>
+            <span class="hex">#028090</span>
+            <span class="use">Section labels, active navigation, categories</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#00A896"></span>
+            <span class="name">Success / Health</span>
+            <span class="hex">#00A896</span>
+            <span class="use">Success, healthy metrics, completed items</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#02C39A"></span>
+            <span class="name">CTA Accent</span>
+            <span class="hex">#02C39A</span>
+            <span class="use">High-value CTAs, progress, positive highlights</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#00B4D8"></span>
+            <span class="name">Info / Data</span>
+            <span class="hex">#00B4D8</span>
+            <span class="use">Info, charts, alerts, data emphasis</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#90E0EF"></span>
+            <span class="name">Soft Sky</span>
+            <span class="hex">#90E0EF</span>
+            <span class="use">Soft panels, chart fills, empty-state illustration</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#CAF0F8"></span>
+            <span class="name">Card / Input</span>
+            <span class="hex">#CAF0F8</span>
+            <span class="use">Cards, filters, input backgrounds</span>
+          </div>
+          <div class="palette-row">
+            <span class="swatch" style="background:#FFB703"></span>
+            <span class="name">Wellness Highlight</span>
+            <span class="hex">#FFB703</span>
+            <span class="use">Special callouts, wellness content, subtle highlights</span>
+          </div>
+        </div>
+
+        <div class="semantic-grid" aria-label="Admin panel semantic mapping">
+          <article class="semantic-card"><span class="semantic-pill" style="background:#0077B6"></span><div><p class="semantic-title">Dashboard</p><p class="semantic-copy">Overview, KPIs, charts</p></div></article>
+          <article class="semantic-card"><span class="semantic-pill" style="background:#028090"></span><div><p class="semantic-title">Appointments</p><p class="semantic-copy">Schedules and queue states</p></div></article>
+          <article class="semantic-card"><span class="semantic-pill" style="background:#05668D"></span><div><p class="semantic-title">Patients</p><p class="semantic-copy">Profiles and clinical records</p></div></article>
+          <article class="semantic-card"><span class="semantic-pill" style="background:#03045E"></span><div><p class="semantic-title">Billing</p><p class="semantic-copy">Payments, invoices, finance</p></div></article>
+          <article class="semantic-card"><span class="semantic-pill" style="background:#00A896"></span><div><p class="semantic-title">Success</p><p class="semantic-copy">Completed, paid, healthy, verified</p></div></article>
+          <article class="semantic-card"><span class="semantic-pill" style="background:#FFB703"></span><div><p class="semantic-title">Warning</p><p class="semantic-copy">Needs attention - pair with dark text</p></div></article>
+          <article class="semantic-card"><span class="semantic-pill" style="background:#00B4D8"></span><div><p class="semantic-title">Information</p><p class="semantic-copy">Guidance, notes, system information</p></div></article>
+          <article class="semantic-card"><span class="semantic-pill" style="background:#03045E"></span><div><p class="semantic-title">Critical</p><p class="semantic-copy">High-priority actions - add icon/text, not color alone</p></div></article>
+        </div>
+
+        <p class="ratio">Recommended ratio: 60% light surfaces | 20% navy/blue | 15% teal/cyan | 5% bright accents</p>
+      </section>
+    </main>
+  </section>
+
+  <section class="page page-break">
+    <main class="content">
+      <section class="admin-intro">
+        <h2>Admin UI examples</h2>
+        <p>A practical reference for turning the palette into a consistent healthcare dashboard.</p>
+      </section>
+
+      <section class="admin-shell" aria-label="Dashboard example">
+        <aside class="sidebar">
+          <p class="brand">MEDICARE</p>
+          <nav class="nav">
+            <div class="nav-item active"><span class="nav-dot" style="background:#02C39A"></span><span>Overview</span></div>
+            <div class="nav-item"><span class="nav-dot" style="background:#0077B6"></span><span>Patients</span></div>
+            <div class="nav-item"><span class="nav-dot" style="background:#028090"></span><span>Appointments</span></div>
+            <div class="nav-item"><span class="nav-dot" style="background:#0077B6"></span><span>Billing</span></div>
+            <div class="nav-item"><span class="nav-dot" style="background:#00B4D8"></span><span>Reports</span></div>
+            <div class="nav-item"><span class="nav-dot" style="background:#05668D"></span><span>Settings</span></div>
+          </nav>
+        </aside>
+
+        <div class="dashboard">
+          <h3>Dashboard overview</h3>
+          <p class="date">Today, 24 Sep 2026</p>
+
+          <div class="kpis">
+            <div class="kpi"><p class="kpi-label">Patients</p><p class="kpi-value">1284</p></div>
+            <div class="kpi"><p class="kpi-label">Appointments</p><p class="kpi-value">86</p></div>
+            <div class="kpi"><p class="kpi-label">Revenue</p><p class="kpi-value">$24,580</p></div>
+            <div class="kpi"><p class="kpi-label">Open Tasks</p><p class="kpi-value">14</p></div>
+          </div>
+
+          <div class="dash-grid">
+            <section class="panel">
+              <h4 class="panel-title">Appointments</h4>
+              <div class="chart" aria-label="Weekly appointments bar chart">
+                <span class="bar" style="height:48%"></span>
+                <span class="bar" style="height:69%"></span>
+                <span class="bar" style="height:58%"></span>
+                <span class="bar" style="height:88%"></span>
+                <span class="bar" style="height:77%"></span>
+                <span class="bar" style="height:100%"></span>
+                <span class="bar" style="height:87%"></span>
+              </div>
+              <div class="days"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+            </section>
+
+            <section class="panel">
+              <h4 class="panel-title">Queue status</h4>
+              <div class="queue">
+                <div class="queue-item"><span class="queue-dot" style="background:#00A896"></span><span>Checked in</span></div>
+                <div class="queue-item"><span class="queue-dot" style="background:#FFB703"></span><span>Waiting</span></div>
+                <div class="queue-item"><span class="queue-dot" style="background:#05668D"></span><span>In consultation</span></div>
+                <div class="queue-item"><span class="queue-dot" style="background:#02C39A"></span><span>Completed</span></div>
+              </div>
+            </section>
+          </div>
+
+          <div class="buttons" aria-label="Buttons and controls">
+            <button class="btn primary">Primary</button>
+            <button class="btn secondary">Secondary</button>
+            <button class="btn soft">Soft</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="forms">
+        <h2>Forms &amp; tables</h2>
+        <div class="search-bar">
+          <span class="search-label">Search patient</span>
+          <div class="field">e.g. Priya Sharma</div>
+          <button class="btn primary">Search</button>
+          <button class="btn soft">Filters</button>
+        </div>
+
+        <div class="table-card">
+          <table>
+            <thead><tr><th>Patient</th><th>Doctor</th><th>Time</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Ananya Roy</td><td>Dr. Mehta</td><td>10:30</td><td><span class="status confirmed">Confirmed</span></td></tr>
+              <tr><td>Rohan Das</td><td>Dr. Sen</td><td>11:15</td><td><span class="status waiting">Waiting</span></td></tr>
+              <tr><td>Maya Paul</td><td>Dr. Khan</td><td>12:00</td><td><span class="status completed">Completed</span></td></tr>
+              <tr><td>Arjun Rao</td><td>Dr. Gupta</td><td>12:45</td><td><span class="status consult">In consult</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="accessibility">
+        <h3>Accessibility notes</h3>
+        <ul>
+          <li>Use text + icons + color for status; never color alone.</li>
+          <li>Keep body text on light surfaces in #172A3A or darker.</li>
+          <li>Use bright turquoise for emphasis, not large text blocks.</li>
+          <li>Keep #FFB703 as a supporting highlight, not a primary brand surface.</li>
+        </ul>
+      </section>
+
+      <p class="footer">Medical Admin Panel Color System | Derived from Turquoise Harmony + Ocean Breeze</p>
+    </main>
+  </section>
+</body>
+</html>
